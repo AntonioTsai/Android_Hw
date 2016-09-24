@@ -3,7 +3,8 @@ package antonio.lab1;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.ViewGroup;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class Main2Activity extends AppCompatActivity {
@@ -15,11 +16,15 @@ public class Main2Activity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-        TextView textView = new TextView(this);
-        textView.setTextSize(40);
-        textView.setText(message);
+        TextView string = (TextView) findViewById(R.id.demo);
+        Button edit = (Button) findViewById(R.id.back);
 
-        ViewGroup layout = (ViewGroup) findViewById(R.id.activity_main2);
-        layout.addView(textView);
+        string.setText(message);
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

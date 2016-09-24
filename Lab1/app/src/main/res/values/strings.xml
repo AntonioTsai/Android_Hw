@@ -2,4 +2,6 @@
     <string name="app_name">Lab1</string>
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
+    <string name="button_back">Back</string>
+    <string name="demo">Demo</string>
 </resources>
