@@ -25,7 +25,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/back"
+        android:layout_below="@+id/seekBar_B"
         android:textSize="36sp" />
 
     <Button
@@ -47,4 +47,57 @@
         android:onClick="zoomOutText"
         android:text="-" />
 
+    <TextView
+        android:id="@+id/textView_color_R"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/back"
+        android:layout_marginTop="18dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textView_color_G"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView_color_R"
+        android:layout_marginTop="10dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textView_color_B"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView_color_G"
+        android:layout_marginTop="11dp"
+        android:text="TextView" />
+
+    <SeekBar
+        android:id="@+id/seekBar_R"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textView_color_R"
+        android:layout_toEndOf="@+id/textView_color_R"
+        android:max="255" />
+
+    <SeekBar
+        android:id="@+id/seekBar_G"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/seekBar_R"
+        android:layout_alignTop="@+id/textView_color_G"
+        android:layout_toEndOf="@+id/textView_color_G"
+        android:max="255" />
+
+    <SeekBar
+        android:id="@+id/seekBar_B"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/seekBar_G"
+        android:layout_alignTop="@+id/textView_color_B"
+        android:layout_toEndOf="@+id/textView_color_B"
+        android:max="255" />
 </RelativeLayout>
