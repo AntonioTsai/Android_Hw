@@ -34,9 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:onClick="zoomInText"
         android:text="+" />
-
 
     <Button
         android:id="@+id/zoomOut"
@@ -44,7 +42,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toStartOf="@+id/zoomIn"
-        android:onClick="zoomOutText"
         android:text="-" />
 
     <TextView
