@@ -123,7 +123,7 @@ public class Main2Activity extends AppCompatActivity {
         seekBar_R.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                textView_color_R.setText("R " + progress + "/" + seekBar.getMax());
+                textView_color_R.setText("R " + String.format("%03d", progress) + "/" + seekBar.getMax());
                 textColor = (seekBar_R.getProgress() << 16 & 0x00FF0000) +
                         (seekBar_G.getProgress() << 8 & 0x0000FF00) +
                         (seekBar_B.getProgress() & 0x000000FF) +
@@ -144,7 +144,7 @@ public class Main2Activity extends AppCompatActivity {
         seekBar_G.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                textView_color_G.setText("G " + progress + "/" + seekBar.getMax());
+                textView_color_G.setText("G " + String.format("%03d", progress) + "/" + seekBar.getMax());
                 textColor = (seekBar_R.getProgress() << 16 & 0x00FF0000) +
                         (seekBar_G.getProgress() << 8 & 0x0000FF00) +
                         (seekBar_B.getProgress() & 0x000000FF) +
@@ -165,7 +165,7 @@ public class Main2Activity extends AppCompatActivity {
         seekBar_B.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                textView_color_B.setText("B " + progress + "/" + seekBar.getMax());
+                textView_color_B.setText("B " + String.format("%03d", progress) + "/" + seekBar.getMax());
                 textColor = (seekBar_R.getProgress() << 16 & 0x00FF0000) +
                         (seekBar_G.getProgress() << 8 & 0x0000FF00) +
                         (seekBar_B.getProgress() & 0x000000FF) +
