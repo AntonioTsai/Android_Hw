@@ -17,73 +17,74 @@
         android:text="Hello World!" />
 
     <Button
-        android:id="@+id/btn_play_sd"
+        android:id="@+id/btnPlaySD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/btn_play_raw"
+        android:layout_below="@+id/btnPlayRaw"
         android:layout_marginTop="24dp"
         android:text="從SD卡播放" />
 
     <Button
-        android:id="@+id/btn_play_url"
+        android:id="@+id/btnPlayURL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/btn_play_sd"
+        android:layout_below="@+id/btnPlaySD"
         android:layout_marginTop="24dp"
         android:text="從URL播放" />
 
     <Button
-        android:id="@+id/btn_stop"
+        android:id="@+id/btnStop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/btn_play"
-        android:layout_below="@+id/btn_play"
+        android:layout_alignEnd="@+id/btnPlay"
+        android:layout_below="@+id/btnPlay"
         android:layout_marginTop="29dp"
         android:text="停止" />
 
-    <SeekBar
-        android:id="@+id/seekBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/btn_play_url"
-        android:layout_marginTop="44dp" />
-
     <Button
-        android:id="@+id/btn_volume_up"
+        android:id="@+id/btnVolUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/seekBar"
+        android:layout_below="@+id/progressBar"
         android:layout_marginTop="42dp"
         android:text="音量+" />
 
     <Button
-        android:id="@+id/btn_volume_down"
+        android:id="@+id/btnVolDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/btn_volume_up"
-        android:layout_toStartOf="@+id/btn_stop"
+        android:layout_alignTop="@+id/btnVolUp"
+        android:layout_toStartOf="@+id/btnStop"
         android:text="音量-" />
 
     <Button
-        android:id="@+id/btn_play_raw"
+        android:id="@+id/btnPlayRaw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/btn_play_sd"
+        android:layout_alignEnd="@+id/btnPlaySD"
         android:layout_below="@+id/textView"
         android:layout_marginTop="21dp"
         android:text="從raw播放" />
 
     <Button
-        android:id="@+id/btn_play"
+        android:id="@+id/btnPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btn_play_raw"
-        android:layout_alignBottom="@+id/btn_play_raw"
+        android:layout_alignBaseline="@+id/btnPlayRaw"
+        android:layout_alignBottom="@+id/btnPlayRaw"
         android:layout_alignParentEnd="true"
         android:text="播放" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/btnPlayRaw"
+        android:layout_below="@+id/btnPlayURL"
+        android:layout_marginTop="33dp" />
 </RelativeLayout>
