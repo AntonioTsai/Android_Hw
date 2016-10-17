@@ -56,6 +56,35 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    player.stop();
+                    btnRaw.setEnabled(true);
+                    btnSD.setEnabled(true);
+                    btnURL.setEnabled(true);
+                    btnStop.setEnabled(false);
+                } catch (IllegalStateException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        btnVolDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                audioManager.adjustVolume(AudioManager.ADJUST_LOWER, 5);
+            }
+        });
+
+        btnVolUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                audioManager.adjustVolume(AudioManager.ADJUST_RAISE, 5);
+            }
+        });
+
     }
 
     class ProcessBarRefresh implements Runnable {
