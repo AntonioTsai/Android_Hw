@@ -40,13 +40,14 @@ public class MainActivity extends AppCompatActivity {
         btnRaw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //player = MediaPlayer.create(MainActivity.this, R.raw.sample);
+                player = MediaPlayer.create(MainActivity.this, R.raw.sample);
                 try {
                     progressBar.setProgress(0);
                     length = player.getDuration();
                     progressBar.setMax(length / 1000);
                     player.start();
                     new Thread(new ProcessBarRefresh()).start();
+                    btnRaw.setEnabled(false);
                     btnSD.setEnabled(false);
                     btnStop.setEnabled(true);
                 } catch (IllegalStateException | IllegalArgumentException | SecurityException e) {
