@@ -3,11 +3,14 @@ package com.example.antonio.lab2;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
     Button btnRaw, btnSD, btnURL, btnPlay, btnStop, btnVolUp, btnVolDown;
@@ -51,6 +54,28 @@ public class MainActivity extends AppCompatActivity {
                     btnSD.setEnabled(false);
                     btnStop.setEnabled(true);
                 } catch (IllegalStateException | IllegalArgumentException | SecurityException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        btnSD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    player = new MediaPlayer();
+                    // player.setDataSource(Environment.getExternalStorageDirectory().toString() + "/04 - Eine Kleine.mp3");
+                    player.setDataSource(Environment.getExternalStorageDirectory().toString() + "/01 to the beginning.mp3");
+                    progressBar.setProgress(0);
+                    player.prepare();
+                    length = player.getDuration();
+                    progressBar.setMax(length / 1000);
+                    player.start();
+                    new Thread(new ProcessBarRefresh()).start();
+                    btnRaw.setEnabled(false);
+                    btnSD.setEnabled(false);
+                    btnStop.setEnabled(true);
+                } catch (IllegalStateException | IllegalArgumentException | IOException | SecurityException e) {
                     e.printStackTrace();
                 }
             }
