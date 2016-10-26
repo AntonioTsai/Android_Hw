@@ -13,7 +13,7 @@ import android.widget.SeekBar;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnRaw, btnSD, btnURL, btnPlay, btnStop, btnVolUp, btnVolDown;
+    Button btnRaw, btnSD, btnURL, btnPlay, btnPause, btnStop, btnVolUp, btnVolDown;
     MediaPlayer player;
     ProgressBar progressBar;
     SeekBar seekBar;
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         btnRaw = (Button) findViewById(R.id.btnPlayRaw);
         btnSD = (Button) findViewById(R.id.btnPlaySD);
         btnURL = (Button) findViewById(R.id.btnPlayURL);
+        btnPause = (Button) findViewById(R.id.btnPause);
         btnPlay = (Button) findViewById(R.id.btnPlay);
         btnStop = (Button) findViewById(R.id.btnStop);
         btnVolUp = (Button) findViewById(R.id.btnVolUp);
@@ -39,6 +40,16 @@ public class MainActivity extends AppCompatActivity {
         btnPlay.setEnabled(true);
         btnRaw.setEnabled(true);
         btnStop.setEnabled(true);
+
+        btnPause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                player.pause();
+                btnPlay.setEnabled(true);
+                btnRaw.setEnabled(true);
+                btnStop.setEnabled(true);
+            }
+        });
 
         btnRaw.setOnClickListener(new View.OnClickListener() {
             @Override
