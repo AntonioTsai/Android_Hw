@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnPre
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode != RESULT_OK) {
+        if (resultCode != RESULT_OK) {
             Log.e(TAG, "Read File Error!");
             return;
         }
