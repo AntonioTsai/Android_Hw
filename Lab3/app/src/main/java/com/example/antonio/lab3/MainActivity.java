@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnPre
         setContentView(R.layout.activity_main);
 
         // Set screen not to rorate and display in straight
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         videoView = (VideoView) findViewById(R.id.videoView);
@@ -38,12 +36,17 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnPre
         videoView.setMediaController(mediaController);
         FileSelect = new Intent(Intent.ACTION_GET_CONTENT);
         FileSelect.setType("video/*");
+        //FileSelect.setType("video/*|audio/*");
+        String[] mimetypes = {"audio/*", "video/*"};
+        FileSelect.putExtra(Intent.EXTRA_MIME_TYPES, mimetypes);
         this.startActivityForResult(FileSelect, REQUEST_CODE);
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
                 FileSelect = new Intent(Intent.ACTION_GET_CONTENT);
                 FileSelect.setType("video/*");
+                String[] mimetypes = {"audio/*", "video/*"};
+                FileSelect.putExtra(Intent.EXTRA_MIME_TYPES, mimetypes);
                 startActivityForResult(FileSelect, REQUEST_CODE);
             }
         });
@@ -79,6 +82,8 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnPre
                 videoView.suspend();
                 FileSelect = new Intent(Intent.ACTION_GET_CONTENT);
                 FileSelect.setType("video/*");
+                String[] mimetypes = {"audio/*", "video/*"};
+                FileSelect.putExtra(Intent.EXTRA_MIME_TYPES, mimetypes);
                 this.startActivityForResult(FileSelect, REQUEST_CODE);
                 break;
             case KeyEvent.KEYCODE_MENU:
