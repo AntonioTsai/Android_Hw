@@ -1,7 +1,9 @@
 package com.example.antonio.lab5;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -14,6 +16,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private FloatingActionButton mapMode;
+    private int mapType = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +26,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+
+        mapMode = (FloatingActionButton) findViewById(R.id.mapMode);
+
+        mapMode.setOnClickListener(new changeMapMode());
         mapFragment.getMapAsync(this);
     }
 
@@ -50,5 +58,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Method 2 With animation
         // mMap.moveCamera(CameraUpdateFactory.newLatLng(tatung));
         // mMap.animateCamera(CameraUpdateFactory.zoomTo(18f));
+    }
+
+    public class changeMapMode implements View.OnClickListener {
+
+        @Override
+        public void onClick(View view) {
+            switch (mapType) {
+                case 0:
+                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                    mapType++;
+                    break;
+                case 1:
+                    mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                    mapType++;
+                    break;
+                case 2:
+                    mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                    mapType++;
+                    break;
+                default:
+                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                    mapType = 0;
+            }
+        }
     }
 }
