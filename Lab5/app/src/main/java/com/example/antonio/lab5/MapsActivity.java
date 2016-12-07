@@ -52,7 +52,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng tatung = new LatLng(25.067367, 121.521277);
         CameraUpdate zoom = CameraUpdateFactory.zoomIn();
 
-        mMap.addMarker(new MarkerOptions().position(tatung).title("Marker in Sydney"));
+        mMap.addMarker(new MarkerOptions().position(tatung).title("大同電鍋"));
         // Method 1
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(tatung, 16f));
         // Method 2 With animation
