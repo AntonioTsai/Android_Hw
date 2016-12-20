@@ -1,5 +1,6 @@
 package com.example.antonio.lab6;
 
+import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -9,6 +10,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -39,8 +41,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng tatung = new LatLng(25.067367, 121.521277);
+        LatLng mrt = new LatLng(25.062891, 121.519319);
+        mMap.addMarker(new MarkerOptions().position(tatung).title("Marker in Tatung"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(tatung, 16f));
+        mMap.addPolyline(new PolylineOptions().add(tatung, mrt)
+                .width(10)
+                .color(Color.RED)
+        );
     }
 }
