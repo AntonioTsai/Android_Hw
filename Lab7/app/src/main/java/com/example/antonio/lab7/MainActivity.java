@@ -26,5 +26,18 @@ public class MainActivity extends AppCompatActivity {
         IdEdt = (EditText) findViewById(R.id.uid);
         nameEdt = (EditText) findViewById(R.id.name);
         phoneEdt = (EditText) findViewById(R.id.phone);
+
+        try { // Create Database
+            db = openOrCreateDatabase("example.db", MODE_PRIVATE, null);
+        } catch (Exception e) {
+
+        }
+
+        try { // Create a table "contact"
+            db.execSQL("DROP TABLE contact");
+            db.execSQL("CREATE TABLE contact (_id INTEGER PRIMARY KEY, name TEXT, phone TEXT)");
+        } catch (Exception e) {
+            db.execSQL("CREATE TABLE contact (_id INTEGER PRIMARY KEY, name TEXT, phone TEXT)");
+        }
     }
 }
