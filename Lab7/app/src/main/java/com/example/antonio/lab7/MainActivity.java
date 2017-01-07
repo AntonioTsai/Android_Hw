@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private Button newBtn, delBtn, updateBtn, queryBtn;
@@ -91,6 +93,23 @@ public class MainActivity extends AppCompatActivity {
                     }
                 } catch (Exception e) {
                     Log.v("DEBUG", "Update");
+                }
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                try {
+                    String name = ((TextView) view.findViewById(android.R.id.text1)).getText().toString();
+                    Cursor cursor = db.rawQuery("SELECT * FROM contact WHERE name = \"" + name + "\"", null);
+                    if (cursor != null && cursor.getCount() >= 0) {
+                        cursor.moveToFirst();
+                        idEdt.setText(Integer.toString(cursor.getInt(0)));
+                    }
+                } catch (Exception e) {
+                    Log.v("DEBUG", "Click");
+                    e.printStackTrace();
                 }
             }
         });
