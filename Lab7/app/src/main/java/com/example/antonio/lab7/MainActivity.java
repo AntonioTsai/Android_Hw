@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,6 +54,23 @@ public class MainActivity extends AppCompatActivity {
                 cv.put("phone", phoneEdt.getText().toString());
                 db.insert("contact", null, cv);
                 loadListView("SELECT * FROM contact");
+            }
+        });
+
+        delBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                try {
+                    String uid = idEdt.getText().toString();
+                    Cursor cursor = db.rawQuery("SELECT * FROM contact WHERE _id = " + uid, null);
+                    if (cursor != null && cursor.getCount() >= 0) {
+                        db.delete("contact", "_id = " + uid, null);
+                        loadListView("SELECT * FROM contact");
+                    }
+                } catch (Exception e) {
+                    Log.v("DEBUG", "Error");
+                }
             }
         });
     }
