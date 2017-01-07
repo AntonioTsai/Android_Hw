@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView listView;
     private EditText idEdt, nameEdt, phoneEdt;
     private SQLiteDatabase db = null;
+    private String table = "contact";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +70,27 @@ public class MainActivity extends AppCompatActivity {
                         loadListView("SELECT * FROM contact");
                     }
                 } catch (Exception e) {
-                    Log.v("DEBUG", "Error");
+                    Log.v("DEBUG", "Delete");
+                }
+            }
+        });
+
+        updateBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                try {
+                    String uid = idEdt.getText().toString();
+                    Cursor cursor = db.rawQuery("SELECT * FROM contact WHERE _id = " + uid, null);
+                    if (cursor != null && cursor.getCount() >= 0) {
+                        ContentValues cv = new ContentValues();
+                        cv.put("name", nameEdt.getText().toString());
+                        cv.put("phone", phoneEdt.getText().toString());
+                        db.update("contact", cv, "_id = " + uid, null);
+                        loadListView("SELECT * FROM contact");
+                    }
+                } catch (Exception e) {
+                    Log.v("DEBUG", "Update");
                 }
             }
         });
